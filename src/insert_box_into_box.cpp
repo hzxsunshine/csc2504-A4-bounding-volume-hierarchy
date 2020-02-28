@@ -4,8 +4,13 @@ void insert_box_into_box(
   const BoundingBox & A,
   BoundingBox & B)
 {
-  ////////////////////////////////////////////////////////////////////////////
-  // Add your code here
-  ////////////////////////////////////////////////////////////////////////////
+    for (int i = 0; i < 3; ++i) {
+        //for min_corner
+        B.min_corner[i] = (B.min_corner[i] < A.min_corner[i])? B.min_corner[i]:A.min_corner[i];
+
+        // for max_corner
+        B.max_corner[i] = (B.max_corner[i] > A.max_corner[i])? B.max_corner[i]:A.max_corner[i];
+    }
+
 }
 

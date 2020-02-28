@@ -7,9 +7,20 @@ void nearest_neighbor_brute_force(
   int & I,
   double & sqrD)
 {
-  ////////////////////////////////////////////////////////////////////////////
-  // Replace with your code here:
-  I = -1;
-  sqrD = 0;
-  ////////////////////////////////////////////////////////////////////////////
+    double min_d = std::numeric_limits<double>::infinity();
+    I = -1;
+    sqrD = 0;
+    double d_s;
+    for (int i = 0; i < points.rows(); ++i) {
+
+        Eigen::RowVector3d point = points.row(i);
+
+        d_s = (point - query).squaredNorm();
+
+        if(d_s < min_d){
+            min_d = d_s;
+            I = i;
+        }
+    }
+    sqrD = min_d;
 }
